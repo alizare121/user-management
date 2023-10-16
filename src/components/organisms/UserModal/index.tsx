@@ -72,6 +72,33 @@ export function UserModal({
     });
   };
 
+  const formData = [
+    {
+      key: 'name',
+      value: name,
+    },
+    {
+      key: 'email',
+      value: email,
+    },
+    {
+      key: 'phone',
+      value: phone,
+    },
+    {
+      key: 'city',
+      value: city,
+    },
+    {
+      key: 'street',
+      value: street,
+    },
+    {
+      key: 'suite',
+      value: suite,
+    },
+  ];
+
   return (
     <Modal
       title='User Details'
@@ -88,36 +115,14 @@ export function UserModal({
       ]}
     >
       <form>
-        <Input
-          placeholder='Name'
-          value={name}
-          onChange={(e) => onChangeText('name', e)}
-        />
-        <Input
-          placeholder='Email'
-          value={email}
-          onChange={(e) => onChangeText('email', e)}
-        />
-        <Input
-          placeholder='Phone'
-          value={phone}
-          onChange={(e) => onChangeText('phone', e)}
-        />
-        <Input
-          placeholder='City'
-          value={city}
-          onChange={(e) => onChangeText('city', e)}
-        />
-        <Input
-          placeholder='Street'
-          value={street}
-          onChange={(e) => onChangeText('street', e)}
-        />
-        <Input
-          placeholder='Suite'
-          value={suite}
-          onChange={(e) => onChangeText('suite', e)}
-        />
+        {formData.map(({ key, value }) => (
+          <Input
+            key={key}
+            onChange={(e) => onChangeText(key, e)}
+            placeholder={key}
+            value={value}
+          />
+        ))}
       </form>
     </Modal>
   );
